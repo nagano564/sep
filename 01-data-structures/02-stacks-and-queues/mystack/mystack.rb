@@ -8,7 +8,7 @@ class MyStack
   end
 
   def push(item)
-    push = stack.insert(0, item)
+    stack.insert(0, item)
     self.top = stack[0]
   end
 
@@ -19,6 +19,6 @@ class MyStack
   end
 
   def empty?
-    empty = stack.count == 0
+    stack.count == 0
   end
 end
