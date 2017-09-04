@@ -7,11 +7,14 @@ class MyStack
   end
 
   def push(item)
+    push = stack.insert(item)
   end
 
-  def pop
+  def pop(item)
+    pop = stack.shift(item)
   end
 
   def empty?
+    empty = store.count == 0
   end
 end
