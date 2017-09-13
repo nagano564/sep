@@ -1,4 +1,5 @@
 include RSpec
+require 'pry'
 
 require_relative 'hash_item'
 require_relative 'hashclass'
