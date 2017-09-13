@@ -1,20 +1,24 @@
 class MyStack
   attr_accessor :top
+  attr_accessor :stack
 
   def initialize
     @stack = Array.new
-    self.top = nil
+    self.top=(nil)
   end
 
   def push(item)
-    push = stack.insert(item)
+    stack.insert(0, item)
+    self.top = stack[0]
   end
 
-  def pop(item)
-    pop = stack.shift(item)
+  def pop
+    pop = stack.shift
+    self.top = stack[0]
+    return pop
   end
 
   def empty?
-    empty = store.count == 0
+    stack.count == 0
   end
 end
