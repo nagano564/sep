@@ -1,5 +1,5 @@
 include RSpec
-
+require 'pry'
 require_relative 'separate_chaining'
 
 RSpec.describe SeparateChaining, type: Class do
@@ -51,6 +51,13 @@ RSpec.describe SeparateChaining, type: Class do
       expect(star_wars_movies["Star Wars: A New Hope"]).to eq "Number Four"
       expect(star_wars_movies["Star Wars: The Empire Strikes Back"]).to eq "Number Five"
       expect(star_wars_movies["Star Wars: Return of the Jedi"]).to eq "Number Six"
+    end
+  end
+
+  describe "#hash[key]" do
+    it "returns the correct value for a key" do
+      star_wars_movies["Star Wars: The Phantom Menace"] = "Number One"
+      expect(star_wars_movies["Star Wars: The Phantom Menace"]).to eq "Number One"
     end
   end
 

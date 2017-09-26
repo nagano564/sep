@@ -28,6 +28,8 @@ class HashClass
         end
       end
   end
+  # my_hash = HashClass.new(5)
+  # my_hash["key"] = "value"
 
   def [](key)
     current_index = index(key,@items.size)

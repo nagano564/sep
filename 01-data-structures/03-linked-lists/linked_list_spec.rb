@@ -89,4 +89,23 @@ RSpec.describe LinkedList, type: Class do
       expect(llist.head).to eq nil
     end
   end
+
+  describe "#find" do
+    it "it finds items at nth index" do
+        llist.add_to_front(n1)
+        llist.add_to_front(n2)
+        llist.add_to_front(n3)
+        expect(llist.find(1)).to eq n2
+    end
+  end
+
+  describe "#remove_at" do
+    it "it removes items at nth index" do
+        llist.add_to_front(n1)
+        llist.add_to_front(n2)
+        llist.add_to_front(n3)
+        llist.remove_at(1)
+        expect(llist.find(1)).to eq n1
+    end
+  end
 end

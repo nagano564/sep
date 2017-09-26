@@ -1,0 +1,9 @@
+1)  In the class Line I created several methods which allow you to access the data with
+    the front or middle methods. I created the join or leave methods which will allow
+    you to manipulate the data
+
+2)  To find a specific element they could use the at method in the screen.rb rile or
+    the search method in the line.rb file
+
+3)  A real world data situation would be anywhere where similar objects are in one place.
+    Such as book titles in the library or student ids in a class room.
