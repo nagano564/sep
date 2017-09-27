@@ -48,7 +48,7 @@ class OpenAddressing
     # index is where we start
     # trying to find an empty index after "index"
     loop do
-      index += 1
+      index += 2
       # break if @items[index] == nil && index > @items.length -1
       if @items[index] == nil
         if index > (@items.length - 1)

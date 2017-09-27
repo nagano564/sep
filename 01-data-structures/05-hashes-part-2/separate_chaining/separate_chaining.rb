@@ -11,11 +11,9 @@ class SeparateChaining
   end
 
   def []=(key, value)
-    puts "#{show_everything} before the insert"
     # computer hash code and assign to a_index
     a_index = index(key, @items.size)
     # get @items[a_index] assign to old head
-    puts "The value at #{a_index} is #{@items[a_index]} (this should be a linked list)"
     if @items[a_index].nil?
       # set @items[a_index] to a link that contains key and value
       @items[a_index] = LinkedList.new
@@ -92,16 +90,19 @@ class SeparateChaining
   end
 
   def show_everything
+    everything = ""
+
   	if @items.length == 0
   		#do nothing
   	else
-  		@items.each do |linkedlist|
+  		@items.each_with_index do |linkedlist, index|
   			if linkedlist != nil
   				linkedlist.each do |node|
-  					print "\n#{node.value} is in #{linkedlist}"
+  					everything = "#{everything}\n#{node.key}:#{node.value} is in slot #{index}"
   				end
   			end
   		end
   	end
+    everything
   end
 end
