@@ -37,6 +37,7 @@ class MinHeap
         insert(root.right, node)
       end
     end
+    p "#{printf(node)}"
   end
 
   def swap_up(node)

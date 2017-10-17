@@ -1,6 +1,7 @@
 include RSpec
 
 require_relative 'min_heap'
+require 'byebug'
 
 RSpec.describe MinHeap, type: Class do
   let (:root) { Node.new("The Matrix", 87) }
@@ -17,7 +18,7 @@ RSpec.describe MinHeap, type: Class do
   let (:node9) { Node.new("Star Wars: A New Hope", 93) }
   let (:node10) { Node.new("Star Wars: The Empire Strikes Back", 94) }
   let (:node11) { Node.new("Mad Max 2: The Road Warrior", 98) }
-
+byebug
   describe "#insert(data)" do
     it "properly inserts a new node as a left-right child" do
       tree.insert(root, node4) #85
