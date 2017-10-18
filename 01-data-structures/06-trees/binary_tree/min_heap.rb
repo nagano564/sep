@@ -1,7 +1,13 @@
 require_relative 'node'
 require 'thread'
+require 'pry'
+require 'byebug'
 
 class MinHeap
+
+  attr_reader :root
+  attr_reader :count
+  attr_reader :row_number
 
   def initialize(root)
     @root = root
@@ -9,34 +15,43 @@ class MinHeap
   end
 
   def insert(root, node)
-    row_number = (Math.log2(@count)).floor
+    @count += 1
+    row_number = ((Math.log2(@count)).floor)
     row_max_count = 2 ** row_number
     tree_capacity = 2 ** (row_number + 1 ) - 1
+    row_midpoint = row_max_count / 2
     target_location = row_max_count - (tree_capacity - @count)
-    return nil if node.nil?
-
-    if target_location < ( row_max_count / 2 )
-      # go left
-      if root.left == nil
-        root.left = node
-        node.parent = root
-        swap_up(node)
-        @count += 1
-      else
-        insert(root.left, node)
-      end
-
-    else
-      # go right
-      if root.right == nil
-        root.right = node
-        node.parent = root
-        swap_up(node)
-        @count += 1
-      else
-        insert(root.right, node)
-      end
+    if root.left.nil?
+      root.left = node
+      node.parent = root
+      swap_up(node)
+      return
+    elsif root.right.nil?
+      root.right = node
+      node.parent = root
+      swap_up(node)
+      return
     end
+      if target_location <= row_midpoint
+        # go left
+        if root.left == nil
+          root.left = node
+          node.parent = root
+          swap_up(node)
+        else
+          insert(root.left, node)
+        end
+
+      else
+        # go right
+        if root.right == nil
+          root.right = node
+          node.parent = root
+          swap_up(node)
+        else
+          insert(root.right, node)
+        end
+      end
   end
 
   def swap_up(node)
@@ -112,3 +127,18 @@ class MinHeap
     end
   end
 end
+
+root = Node.new("The Matrix", 87)
+
+heap = MinHeap.new(root)
+p_rim = Node.new("Pacific Rim", 72)
+brave = Node.new("Braveheart", 78)
+jedi = Node.new("Star Wars: Return of the Jedi", 80)
+
+
+heap.insert(root, p_rim)
+
+heap.insert(p_rim, brave)
+heap.insert(p_rim, jedi)
+byebug
+heap.printf(p_rim)
