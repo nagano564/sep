@@ -1,27 +1,34 @@
 require_relative 'node'
 require 'thread'
+require 'pry'
+require 'byebug'
 
 class MinHeap
+  attr_reader :root
+  attr_reader :count
 
   def initialize(root)
     @root = root
     @count = 1
+    @last_node = nil
   end
 
   def insert(root, node)
+    puts "Inserting #{node.title}: #{node.rating}"
+    @count += 1
     row_number = (Math.log2(@count)).floor
     row_max_count = 2 ** row_number
     tree_capacity = 2 ** (row_number + 1 ) - 1
     target_location = row_max_count - (tree_capacity - @count)
     return nil if node.nil?
 
-    if target_location < ( row_max_count / 2 )
+    if target_location <= ( row_max_count / 2 )
       # go left
       if root.left == nil
         root.left = node
         node.parent = root
         swap_up(node)
-        @count += 1
+        return
       else
         insert(root.left, node)
       end
@@ -32,51 +39,55 @@ class MinHeap
         root.right = node
         node.parent = root
         swap_up(node)
-        @count += 1
+        return
       else
         insert(root.right, node)
       end
     end
-    p "#{printf(node)}"
+    printf(root)
+    puts "=========="
   end
 
   def swap_up(node)
     parent_node = node.parent
+    # unless pacific rim is nil || pacific rim's rating <= braveheart's rating -> 72 <= 78
+    unless parent_node.nil? || parent_node.rating <= node.rating
+      # Handle the parents
+      grandparent = parent_node.parent
+      parent_node.parent = node
+      node.parent = grandparent
 
-    if parent_node != nil
-      if parent_node.rating > node.rating
-        # Update grandparent
-        if parent_node.parent != nil
-          if parent_node == parent_node.parent.left
-            parent_node.parent.left = node
-          else
-            parent_node.parent.right = node
-          end
-          # Update parent
-        else
-          parent_node.parent = node
+      # Handle the lefts
+      node_left = node.left
 
-          if node == parent_node.right
-            node.right = parent_node
-            node.left = parent_node.left
-          elsif node == parent_node.left
-            node.left = parent_node
-            node.right = parent_node.right
-          end
-          parent_node.left = nil
-          parent_node.right = nil
-          end
-        end
-    end
-    if node.parent != nil
-      if node.rating < node.parent.rating
-        swap_up(node.parent)
+      unless grandparent.nil?
+        grandparent.left = node
+      else
+        @root = node
       end
+
+      node.left = parent_node
+      parent_node.left = node_left
+
+      # Hangle the rights
+      node_right = node.right
+
+      unless grandparent.nil?
+        grandparent.right = node
+        node.right = parent_node
+      else
+        node.right = parent_node.right # this line is wrong for GP case
+      end
+      parent_node.right = node_right
     end
   end
 
   def delete(root, data)
+    if root.nil? || data.nil?
+      return nil
+    end
 
+    node = find(root,data)
   end
 
   # Recursive Depth First Search
@@ -113,3 +124,16 @@ class MinHeap
     end
   end
 end
+
+# root = Node.new("The Matrix", 87)
+#
+# heap = MinHeap.new(root)
+#
+# p_rim = Node.new("Pacific Rim", 72)
+# brave = Node.new("Braveheart", 78)
+# jedi = Node.new("Star Wars: Return of the Jedi", 80)
+# heap.insert(root, p_rim)
+# byebug
+# heap.insert(root, brave)
+# byebug
+# heap.insert(root, jedi)
