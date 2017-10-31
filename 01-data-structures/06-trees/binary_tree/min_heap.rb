@@ -131,14 +131,13 @@ end
 root = Node.new("The Matrix", 87)
 
 heap = MinHeap.new(root)
+
 p_rim = Node.new("Pacific Rim", 72)
 brave = Node.new("Braveheart", 78)
 jedi = Node.new("Star Wars: Return of the Jedi", 80)
-
-
+donnie = Node.new("Donnie Darko", 85)
 heap.insert(root, p_rim)
-
-heap.insert(p_rim, brave)
-heap.insert(p_rim, jedi)
-byebug
-heap.printf(p_rim)
+heap.insert(root, brave)
+heap.insert(root, jedi)
+heap.insert(root, donnie)
+binding.pry
