@@ -5,5 +5,14 @@
    whole collection hitting each index every time so as n grows, Big O will grow
    linearly.
 
-3) Big O of find_largest_2D_array.rb is O(n^2) since it has to loop through an
-   array two times.
+3) Big O of find_largest_2D_array.rb is O(n) since it has to loop through an
+   array and hit each element once.
+
+4) Big O of numbers_recurive.rb is O(2^n) because if n in increased by one the
+  amount of operations it needs to run grows exponential.
+
+5) Big O of numbers_iterative.rb is O(n) because if n in increased by one the
+   amount of operations it needs to run grows linearly.
+
+6) Big O of sort.rb which is a quicksort algorithm is O(n^2) because if the pivot
+   is the largest or smallest element in the collection it will have to run n^2 times
