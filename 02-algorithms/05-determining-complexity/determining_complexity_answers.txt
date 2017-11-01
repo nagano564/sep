@@ -1,0 +1,9 @@
+1) Big O of goodbye_world.rb is O(1) or constant time. It will always take the
+   same amount of time of execute
+
+2) Big O of find_largest.rb is 0(n) or linear time. It will loop through the
+   whole collection hitting each index every time so as n grows, Big O will grow
+   linearly.
+
+3) Big O of find_largest_2D_array.rb is O(n^2) since it has to loop through an
+   array two times.
