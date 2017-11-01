@@ -1,0 +1,24 @@
+1) O(1) is like driving and 0(2 ^ n) is like walking
+
+2) Best case scenario for binary search is n being right in the middle
+   if n is what your looking for
+
+3) Worst case scenario for binary search is n not being in the collection
+
+4) Bounded case would be in between the best case and worst case
+
+5) See n^2.pdf
+
+6) infinity
+
+7) exponential time
+
+8) See linear.rb
+
+9) See linearworst.pdf
+
+10) Binary Search Big 0 or worst case is O(log n)
+
+11) Binary Search Big Omega or best case is O(1)
+
+12) O(log n)
