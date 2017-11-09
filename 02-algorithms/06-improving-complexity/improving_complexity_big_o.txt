@@ -1,0 +1,10 @@
+1)  The big O of version one is big O(n + n^2)
+    flatten is big O(n) plus rubys sort method which is quicksort (n^2)
+
+2) The big O of version two is big O(n + n log n).
+    flatten is big O(n) plus merge sort which is (n log n)
+
+3) The big O of version three is the same as version one
+   but it improves space complexity because it does not copy the array.
+   Using the flatten! will flatten self in place and not use another array
+   and copy into it.
