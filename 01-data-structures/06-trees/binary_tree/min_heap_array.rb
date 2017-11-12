@@ -25,7 +25,7 @@ class MinHeapBinaryTree
 
   def find(target_node)
     index = 1
-    byebug
+
     return nil if target_node.nil?
     queue = Queue.new
     queue.enq(root)
@@ -45,10 +45,17 @@ class MinHeapBinaryTree
     return nil
   end
 
-  def printf(tree)
-
+  def printf
+    tree_to_string.join
   end
+
 private
+
+  def tree_to_string
+    tree.compact.map do |item|
+      item.value.to_s + ("\n")
+    end
+  end
 
   def set_min_heap_state
     @in_min_heap_state = false
