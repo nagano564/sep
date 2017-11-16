@@ -8,6 +8,13 @@ RSpec.describe Bacon do
 
     anthony_hopkins = "anthony hopkins"
 
-    expect(Bacon.find_kevin_bacon(anthony_hopkins)).to eq "Found link 3 degrees away"
+    expect(Bacon.new.find_kevin_bacon(anthony_hopkins)).to eq
+
+    [
+      "thor",
+      "transformers",
+      "patriots day"
+    ]
+    
   end
 end

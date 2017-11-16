@@ -13,17 +13,18 @@ class Bacon
       # push keys into answer_array
       current_actor = actor
 
-      # Movies.film_actor_hash.each do |key, value|
-      #   #  if current_actor & actor in the same value_array
-      #       # push key into answer_array
-      #     elsif find another key with current_actor as value
-      #       loop thru value_array to find kevin_bacon
-      #       no kevin_bacon so find movie with array[all] starting at 0
-      #       set searching key to new movies
-      #       loop thru value_array to find kevin_bacon
-      #       no kevin_bacon so find movie with array[all] starting at 0
-      #       set searching key to new movies
-      #     else no kevin bacon link
+    Movies.film_actor_hash.each do |key, value|
+     if current_actor == actor in the same value_array
+        answer_array.push(key)
+      elsif find another key with current_actor as value
+        loop thru value_array to find kevin_bacon
+        no kevin_bacon so find movie with array[all] starting at 0
+        set searching key to new movies
+        loop thru value_array to find kevin_bacon
+        no kevin_bacon so find movie with array[all] starting at 0
+        set searching key to new movies
+      else no kevin bacon link
       end
+    end
   end
 end
