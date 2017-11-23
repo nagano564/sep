@@ -16,8 +16,13 @@ class Traveler
       temp_array = []
 
       graph_of_cities.each do |hash|
-        b = Distance.new(answer_array[-1][:x], hash[:x], answer_array[-1][:y], hash[:y]).how_far
-        hash[:distance] = b
+        distance_of_two_cities = Distance.new(
+                                     answer_array[-1][:x],
+                                     answer_array[-1][:y],
+                                     hash[:x],
+                                     hash[:y]
+                                     ).how_far
+        hash[:distance] = distance_of_two_cities
         temp_array.push(hash)
         temp_array.sort!{ |a, b| a[:distance] <=> b[:distance]}
       end

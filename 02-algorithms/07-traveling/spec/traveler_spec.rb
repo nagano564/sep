@@ -11,6 +11,31 @@ RSpec.describe Traveler do
       expect(sorted_array_of_city_strings).to eq ["New York", "Philadelphia", "Dallas", "Los Angeles"]
     end
   end
+  it "return array of cities in order that he should travel" do
+    traveling_salesman = Traveler.new
+    sorted_array_of_hashes = traveling_salesman.neartest_possible_neighbor(Cities.list, "San Jose")
+    sorted_array_of_city_strings = sorted_array_of_hashes.map do |hash|
+      hash[:city]
+    end
+
+    expect(sorted_array_of_city_strings).to eq(
+      [
+        "San Jose",
+        "Los Angeles",
+        "San Diego",
+        "Phoenix",
+        "San Antonio",
+        "Austin",
+        "Houston",
+        "Dallas",
+        "Indianapolis",
+        "Chicago",
+        "Philadelphia",
+        "New York"
+      ]
+    )
+  end
+
 end
 
 def four_random_cities
