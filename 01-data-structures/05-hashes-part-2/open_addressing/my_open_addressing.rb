@@ -1,9 +1,9 @@
 require_relative 'node'
 
 class OpenAddressing
+
   def initialize(size)
     @items = Array.new(size)
-    @cubby = 0.0
   end
 
   def []=(key, value)
@@ -13,8 +13,8 @@ class OpenAddressing
     if @items[my_index] == nil
       @items[my_index] = Node.new(key,value)
     elsif
-      x = next_open_index(my_index)
-      if x == -1
+      find_another_index = next_open_index(my_index)
+      if find_another_index == -1
         loop do
           resize()
           new_index = index(key, @items.size)
@@ -27,7 +27,6 @@ class OpenAddressing
           @items[another_new_index].value = value
         end
       end
-    #if collision my_index = next_open_index then insert
     end
   end
 
@@ -67,13 +66,14 @@ class OpenAddressing
   end
 
   def resize
-    b_array = Array.new( size * 2 )
+    array_for_resize = Array.new( size * 2 )
+
     (0...@items.length).each do |i|
       if @items[i]
-        tempIndex = @items[i].key.sum % b_array.length
-        b_array[tempIndex] = @items[i]
+        temp_index_for_resize = @items[i].key.sum % array_for_resize.length
+        array_for_resize[temp_index_for_resize] = @items[i]
       end
     end
-    @items = b_array
+    @items = array_for_resize
   end
 end
