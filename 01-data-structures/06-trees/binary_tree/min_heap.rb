@@ -44,8 +44,6 @@ class MinHeap
         insert(root.right, node)
       end
     end
-    printf(root)
-    puts "=========="
   end
 
   def swap_up(node)
@@ -101,8 +99,8 @@ class MinHeap
     end
 
     unless root.left.nil?
-        answer = find(root.left, data)
-        return answer unless answer == nil
+      answer = find(root.left, data)
+      return answer unless answer == nil
     end
 
     unless root.right.nil?
@@ -124,16 +122,3 @@ class MinHeap
     end
   end
 end
-
-# root = Node.new("The Matrix", 87)
-#
-# heap = MinHeap.new(root)
-#
-# p_rim = Node.new("Pacific Rim", 72)
-# brave = Node.new("Braveheart", 78)
-# jedi = Node.new("Star Wars: Return of the Jedi", 80)
-# heap.insert(root, p_rim)
-# byebug
-# heap.insert(root, brave)
-# byebug
-# heap.insert(root, jedi)
