@@ -13,7 +13,6 @@ class SeparateChaining
   def []=(key, value)
     # computer hash code and assign to single_index
     single_index = index(key, @main_answer_array.size)
-    # get @main_answer_array[single_index] assign to old head
     if @main_answer_array[single_index].nil?
       # set @main_answer_array[single_index] to a link that contains key and value
       @main_answer_array[single_index] = LinkedList.new
@@ -75,7 +74,6 @@ class SeparateChaining
   def resize
     temp_resize_hash = @main_answer_array
     temp_resize_array = Array.new( @main_answer_array.size * 2 )
-    puts "#{show_everything} is before"
     @main_answer_array.each do |linkedlist|
       if linkedlist != nil
         linkedlist.each do |node|
@@ -86,7 +84,6 @@ class SeparateChaining
       end
     end
     @main_answer_array = temp_resize_array
-    puts "#{show_everything}"
   end
 
   def show_everything

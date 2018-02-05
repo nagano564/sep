@@ -72,11 +72,11 @@ class LinkedList
     elsif node == @tail
       self.remove_tail
     else
-      b_node = @head
-      until b_node.next == node
-        b_node = b_node.next
+      pointer_node = @head
+      until pointer_node.next == node
+        pointer_node = pointer_node.next
       end
-      b_node.next = node.next
+      pointer_node.next = node.next
     end
   end
 
