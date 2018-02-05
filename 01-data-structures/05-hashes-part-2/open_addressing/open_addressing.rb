@@ -2,38 +2,36 @@ require_relative 'node'
 
 class OpenAddressing
   def initialize(size)
-    @items = Array.new(size)
-    @cubby = 0.0
+    @answer_array = Array.new(size)
   end
 
   def []=(key, value)
-    my_index = index(key, @items.size)
+    first_index = index(key, @answer_array.size)
 
     #if nothing in index insert
-    if @items[my_index] == nil
-      @items[my_index] = Node.new(key,value)
+    if @answer_array[first_index] == nil
+      @answer_array[first_index] = Node.new(key,value)
     elsif
-      x = next_open_index(my_index)
-      if x == -1
+      index_for_collision = next_open_index(first_index)
+      if index_for_collision == -1
         loop do
           resize()
-          new_index = index(key, @items.size)
-          break if @items[new_index].nil? || @items[new_index].key == key
+          new_index = index(key, @answer_array.size)
+          break if @answer_array[new_index].nil? || @answer_array[new_index].key == key
         end
-        another_new_index = index(key,@items.size)
-        if @items[another_new_index].nil?
-          @items[another_new_index] = Node.new(key, value)
+        index_after_resize = index(key,@answer_array.size)
+        if @answer_array[index_after_resize].nil?
+          @answer_array[index_after_resize] = Node.new(key, value)
         else
-          @items[another_new_index].value = value
+          @answer_array[index_after_resize].value = value
         end
       end
-    #if collision my_index = next_open_index then insert
     end
   end
 
   def [](key)
-    current_index = index(key,@items.size)
-    @items[current_index].value
+    index_for_key_to_find = index(key,@answer_array.size)
+    @answer_array[index_for_key_to_find].value
   end
 
   # Returns a unique, deterministically reproducible index into an array
@@ -43,15 +41,15 @@ class OpenAddressing
     key.sum % size
   end
 
-  # Given an index, find the next open index in @items
+  # Given an index, find the next open index in @answer_array
   def next_open_index(index)
     # index is where we start
     # trying to find an empty index after "index"
     loop do
-      index += 1
-      # break if @items[index] == nil && index > @items.length -1
-      if @items[index] == nil
-        if index > (@items.length - 1)
+      index += 2
+      # break if @answer_array[index] == nil && index > @answer_array.length -1
+      if @answer_array[index] == nil
+        if index > (@answer_array.length - 1)
           return -1
         else
           break
@@ -63,17 +61,17 @@ class OpenAddressing
 
   # Simple method to return the number of items in the hash
   def size
-    @items.length
+    @answer_array.length
   end
 
   def resize
-    b_array = Array.new( size * 2 )
-    (0...@items.length).each do |i|
-      if @items[i]
-        tempIndex = @items[i].key.sum % b_array.length
-        b_array[tempIndex] = @items[i]
+    temp_resize_array = Array.new( size * 2 )
+    (0...@answer_array.length).each do |i|
+      if @answer_array[i]
+        temp_resize_index = @answer_array[i].key.sum % temp_resize_array.length
+        temp_resize_array[temp_resize_index] = @answer_array[i]
       end
     end
-    @items = b_array
+    @answer_array = temp_resize_array
   end
 end

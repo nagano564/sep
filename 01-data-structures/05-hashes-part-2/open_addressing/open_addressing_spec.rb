@@ -1,7 +1,7 @@
 include RSpec
 
 require_relative 'node'
-require_relative 'my_open_addressing'
+require_relative 'open_addressing'
 require 'byebug'
 
 RSpec.describe OpenAddressing, type: Class do
