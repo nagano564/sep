@@ -12,21 +12,17 @@ class LinkedList
   end
 
   # This method creates a new `Node` using `data`, and inserts it at the end of the list.
+  # once my_node.next = nil add node
+  # once my_node.next = nil => my_node.next = node
   def add_to_tail(node)
-    new_node = node
-    # once my_node.next = nil add node
-    # once my_node.next = nil => my_node.next = node
-
-    # <something>.next = node
+    new_node_currently_adding = node
 
     if node.next == nil
-
-
       # did head change? maybe (when there are no nodes) @head = node
       if @head == nil
-        @head = new_node
-        @tail = @head
-        @tail.next = nil
+         @head = new_node_currently_adding
+         @tail = @head
+         @tail.next = nil
     # did tail change? yes => @tail = node
       else
         @tail.next = node
@@ -38,27 +34,24 @@ class LinkedList
 
   # This method removes the last node in the lists and must keep the rest of the list intact.
   def remove_tail
-    # O -> O -> O -> O
     # once node.next = nil remove node
     #start at head loop through until next = tail
 
     # What happens if the list is empty? We do nothing
     # What happens if the list has one item?
-    #   @head.next is nil
     # What happens if the list has two items?
-    # ...
 
     if @head != nil
       if @head.next == nil
         @head = nil
         @tail = nil
       else
-        a_node = @head
-        until a_node.next == @tail
-          a_node = a_node.next
+        pointer_node = @head
+        until pointer_node.next == @tail
+          pointer_node = pointer_node.next
         end
-        a_node.next = nil
-        @tail = a_node
+        pointer_node.next = nil
+        @tail = pointer_node
         @tail.next = nil
       end
     end
@@ -92,24 +85,19 @@ class LinkedList
       until b_node.next == node
         b_node = b_node.next
       end
-      # b_node is the previous node
-      # 1 -> 2 -> 4 -> 5
       b_node.next = node.next
     end
   end
 
   # This method adds `node` to the front of the list and must set the list's head to `node`.
+  # if list is empty head = node
+  # if list has one item head = node and head.next = old head
   def add_to_front(node)
-
-
-    # if list is empty head = node
-    # if list has one item head = node and head.next = old head
-
     if @head == nil
-      @head = node
-      @head.next = nil
-      @tail = @head
-    elsif @head != nil
+       @head = node
+       @head.next = nil
+       @tail = @head
+    else
         node.next = @head
         @head = node
     end
