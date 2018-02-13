@@ -35,19 +35,19 @@ class LinkedList
   # What happens if the list has two items?
 
   def remove_tail
-    if @head != nil
-      if @head.next == nil
-        @head = nil
-        @tail = nil
-      else
-        pointer_node = @head
-        until pointer_node.next == @tail
-          pointer_node = pointer_node.next
-        end
-        pointer_node.next = nil
-        @tail = pointer_node
-        @tail.next = nil
+    return if @head.nil?
+
+    if @head.next == nil
+      @head = nil
+      @tail = nil
+    else
+      pointer_node = @head
+      until pointer_node.next == @tail
+        pointer_node = pointer_node.next
       end
+      pointer_node.next = nil
+      @tail = pointer_node
+      @tail.next = nil
     end
   end
 
