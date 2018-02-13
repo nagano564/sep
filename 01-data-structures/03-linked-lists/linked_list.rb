@@ -33,14 +33,13 @@ class LinkedList
   end
 
   # This method removes the last node in the lists and must keep the rest of the list intact.
+  # once node.next = nil remove node
+  #start at head loop through until next = tail
+  # What happens if the list is empty? We do nothing
+  # What happens if the list has one item?
+  # What happens if the list has two items?
+
   def remove_tail
-    # once node.next = nil remove node
-    #start at head loop through until next = tail
-
-    # What happens if the list is empty? We do nothing
-    # What happens if the list has one item?
-    # What happens if the list has two items?
-
     if @head != nil
       if @head.next == nil
         @head = nil
@@ -68,9 +67,10 @@ class LinkedList
   end
 
   # This method removes `node` from the list and must keep the rest of the list intact.
-  def delete(node)
   #  loop thru until node.next == node and then next node is the one to delete
   #  node.delete
+  
+  def delete(node)
     if head == nil
       #do nothing
     elsif head == tail
@@ -81,11 +81,11 @@ class LinkedList
     elsif node == @tail
       self.remove_tail
     else
-      b_node = @head
-      until b_node.next == node
-        b_node = b_node.next
+      pointer_node = @head
+      until pointer_node.next == node
+        pointer_node = pointer_node.next
       end
-      b_node.next = node.next
+      pointer_node.next = node.next
     end
   end
 
@@ -104,18 +104,19 @@ class LinkedList
   end
 
   # This method removes and returns the first node in the Linked List and must set Linked List's head to the second node.
+  #remove and returns the first node
+  # @head.next = nil
+  # set 2nd node to head
+  # @head.next = @head?
+
   def remove_front
-    #remove and returns the first node
-    # @head.next = nil
-    # set 2nd node to head
-    # @head.next = @head?
     if head == nil
     	#do nothing
-    	elsif head == tail
-    		@head = nil
-    		@tail = nil
-    	else
-    		@head = head.next
+  	elsif head == tail
+  		@head = nil
+  		@tail = nil
+  	else
+  		@head = head.next
     end
   end
 
