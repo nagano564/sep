@@ -69,7 +69,7 @@ class LinkedList
   # This method removes `node` from the list and must keep the rest of the list intact.
   #  loop thru until node.next == node and then next node is the one to delete
   #  node.delete
-  
+
   def delete(node)
     if head == nil
       #do nothing
@@ -110,9 +110,9 @@ class LinkedList
   # @head.next = @head?
 
   def remove_front
-    if head == nil
-    	#do nothing
-  	elsif head == tail
+    return if head.nil?
+
+  	if head == tail
   		@head = nil
   		@tail = nil
   	else
