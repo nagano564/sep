@@ -120,6 +120,13 @@ class LinkedList
     end
   end
 
+
+  # 1 > 2 > 4
+  # @head = 1, 1.next = 2, 2.next = 3, 3.next = 3
+  # some_variable = 3
+  # some_variable = 4
+  # d_node = d_node.next
+  #how to make sure list links up properly
   def remove_at(index)
     if @head == nil
     else
@@ -130,13 +137,6 @@ class LinkedList
         end
       end
        d_node.next = d_node.next.next
-
-        # 1 > 2 > 4
-        # @head = 1, 1.next = 2, 2.next = 3, 3.next = 3
-        # some_variable = 3
-        # some_variable = 4
-        # d_node = d_node.next
-        #how to make sure list links up properly
     end
   end
 
