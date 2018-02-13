@@ -15,20 +15,15 @@ class LinkedList
   # once my_node.next = nil add node
   # once my_node.next = nil => my_node.next = node
   def add_to_tail(node)
-    new_node_currently_adding = node
-
-    if node.next == nil
-      # did head change? maybe (when there are no nodes) @head = node
-      if @head == nil
-         @head = new_node_currently_adding
-         @tail = @head
-         @tail.next = nil
-    # did tail change? yes => @tail = node
-      else
-        @tail.next = node
-        @tail = node
-        @tail.next = nil
-      end
+    if @head == nil
+       @head = node
+       @tail = @head
+       @tail.next = nil
+  # did tail change? yes => @tail = node
+    else
+      @tail.next = node
+      @tail = node
+      @tail.next = nil
     end
   end
 
