@@ -66,11 +66,11 @@ class LinkedList
   #  node.delete
 
   def delete(node)
-    if head == nil
-      #do nothing
-    elsif head == tail
-      @head = nil
-      @tail = nil
+    return if @head.nil?
+
+    if @head == @tail
+       @head = nil
+       @tail = nil
     elsif node == @head
       self.remove_front
     elsif node == @tail
@@ -79,6 +79,9 @@ class LinkedList
       pointer_node = @head
       until pointer_node.next == node
         pointer_node = pointer_node.next
+          if (pointer_node == nil)
+           raise ArgumentError
+          end
       end
       pointer_node.next = node.next
     end

@@ -7,6 +7,7 @@ RSpec.describe LinkedList, type: Class do
   let(:n1) { Node.new("Rob") }
   let(:n2) { Node.new("Ben") }
   let(:n3) { Node.new("Mike") }
+  let(:n4) { Node.new("Ken") }
   let(:llist) { LinkedList.new }
 
   describe "#add_to_tail" do
@@ -58,6 +59,10 @@ RSpec.describe LinkedList, type: Class do
       expect(llist.head).to eq n1
       expect(llist.head.next).to eq n3
       expect(llist.tail).to eq n3
+    end
+
+    it "removes the middle element but it's not there" do
+          expect { llist.delete(n4) }.to raise_error
     end
 
     it "removes the last element of a list properly" do
