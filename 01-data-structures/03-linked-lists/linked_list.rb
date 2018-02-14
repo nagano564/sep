@@ -38,8 +38,8 @@ class LinkedList
     return if @head.nil?
 
     if @head.next == nil
-      @head = nil
-      @tail = nil
+       @head = nil
+       @tail = nil
     else
       pointer_node = @head
       until pointer_node.next == @tail
@@ -108,13 +108,13 @@ class LinkedList
   # @head.next = @head?
 
   def remove_front
-    return if head.nil?
+    return if @head.nil?
 
-  	if head == tail
-  		@head = nil
-  		@tail = nil
+  	if @head == @tail
+  		 @head = nil
+  		 @tail = nil
   	else
-  		@head = head.next
+  		@head = @head.next
     end
   end
 
