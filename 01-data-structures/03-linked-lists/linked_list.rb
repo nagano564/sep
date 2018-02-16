@@ -45,7 +45,6 @@ class LinkedList
       until pointer_node.next == @tail
         pointer_node = pointer_node.next
       end
-      pointer_node.next = nil
       @tail = pointer_node
       @tail.next = nil
     end
