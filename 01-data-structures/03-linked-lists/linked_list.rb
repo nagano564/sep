@@ -70,9 +70,9 @@ class LinkedList
     if @head == @tail
        @head = nil
        @tail = nil
-    elsif node == @head
+    elsif @head == node
       self.remove_front
-    elsif node == @tail
+    elsif @tail == node
       self.remove_tail
     else
       pointer_node = @head
