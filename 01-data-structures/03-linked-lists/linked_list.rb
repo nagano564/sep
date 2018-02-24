@@ -37,7 +37,7 @@ class LinkedList
   def remove_tail
     return if @head.nil?
 
-    if @head.next == nil
+    if @head == @tail
        @head = nil
        @tail = nil
     else
