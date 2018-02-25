@@ -2,14 +2,12 @@ require 'byebug'
 require 'benchmark'
 
 def quick_sort(array, low, high)
-  if array.length <= 1
-    array
-  else
-    if low < high
-      x = partition(array, low, high)
-      quick_sort(array, low, x - 1 )
-      quick_sort(array, x + 1, high)
-    end
+  return array if array.length <= 1
+
+  if low < high
+    x = partition(array, low, high)
+    quick_sort(array, low, x - 1 )
+    quick_sort(array, x + 1, high)
   end
   return array
 end
