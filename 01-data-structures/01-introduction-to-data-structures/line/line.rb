@@ -17,13 +17,12 @@ class Line
   end
 
   def front
-      front = members[0]
+    front = members[0]
   end
 
   def middle
     middle_num = members.length/2
     middle = members[middle_num]
-
   end
 
   def back
