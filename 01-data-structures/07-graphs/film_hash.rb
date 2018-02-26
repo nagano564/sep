@@ -21,12 +21,14 @@ johnny_depp = Node.new("Johnny Depp")
 joe_cross = Node.new("Joe Cross")
 amy_badberg = Node.new("Amy Badberg")
 merv_cross = Node.new("Merv Cross")
-list = FindKevinBacon.new(kevin_bacon)
+alec_baldwin = Node.new("Alec Baldwin")
+kevin_spacey = Node.new("Kevin Spacey")
+# graph = FindKevinBacon.new(kevin_bacon)
 
 kevin_bacon.film_actor_hash["FootLoose"] = [lori_singer, john_lithgow, chris_penn]
 bill_paxton.film_actor_hash["Appolo 13"] = [kevin_bacon, tom_hanks]
-vin_diesel.film_actor_hash["Saving Private Ryan"] = [tom_hanks, matt_damon, paul_giamatti, ted_danson]
-matt_damon.flim_actor_hash["Saving Private Ryan"] = [paul_giamatti, ted_danson]
+tom_hanks.film_actor_hash["Saving Private Ryan"] = [paul_giamatti, ted_danson, matt_damon]
 john_lithgow.film_actor_hash["Interstellar"] = [matthew_mcconaughey, anne_hathaway, lori_singer]
 paul_giamatti.film_actor_hash["Donnie Brasco"] = [al_pacino, johnny_depp]
 joe_cross.film_actor_hash["Fat, Sick and nearly dead"] = [amy_badberg, merv_cross]
+al_pacino.film_actor_hash["Glengarry Glen Ross"] = [alec_baldwin, kevin_spacey]
