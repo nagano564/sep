@@ -10,18 +10,18 @@ class FindKevinBacon
   end
 
   def find_kevin_bacon(node_start)
-    # byebug
     node_start.film_actor_hash.each do |movie, actors|
-      actors.each do |actor_name|
-        if @answer.length >= 6
-          puts "Here is the #{@answer}"
-          # puts "#{node_start} is not within 6 degrees of kevin bacon"
-        elsif actor_name == "Kevin Bacon"
+      actors.each do |actor|
+        if @answer.length > 6
+          puts "#{node_start} is not within 6 degrees of kevin bacon"
+        elsif actor.name == "Kevin Bacon"
           @answer.push(movie)
-          puts "You found Kevin Bacon"
+          puts "You found Kevin Bacon. Here's the list #{@answer}"
         else
+
           @answer.push(movie) unless @answer.include?(movie)
-          find_kevin_bacon(actor_name)
+          puts "Here is the list so far #{@answer}"
+          find_kevin_bacon(actor)
         end
       end
     end

@@ -30,7 +30,7 @@ RSpec.describe FindKevinBacon, type: Class do
 
   before (:each) do
     kevin_bacon.film_actor_hash["FootLoose"] = [lori_singer, john_lithgow, chris_penn]
-    bill_paxton.film_actor_hash["Appolo 13"] = [kevin_bacon, tom_hanks]
+    bill_paxton.film_actor_hash["Apollo 13"] = [kevin_bacon, tom_hanks]
     tom_hanks.film_actor_hash["Saving Private Ryan"] = [paul_giamatti, ted_danson, matt_damon]
     john_lithgow.film_actor_hash["Interstellar"] = [matthew_mcconaughey, anne_hathaway, lori_singer]
     paul_giamatti.film_actor_hash["Donnie Brasco"] = [al_pacino, johnny_depp]
@@ -44,11 +44,11 @@ RSpec.describe FindKevinBacon, type: Class do
     end
 
     it "finds kevin back if he is in a movie - one degree" do
-      expect{(graph.find_kevin_bacon(bill_paxton))}.to output("[\"Appolo 13\"]\n").to_stdout
+      expect{(graph.find_kevin_bacon(bill_paxton))}.to output("You found Kevin Bacon. Here's the list [\"Apollo 13\"]\n").to_stdout
     end
 
     it "finds kevin if he is associated with an actor in another film matt_damon => tom_hanks => kevin_bacon" do
-      expect{(graph.find_kevin_bacon(paul_giamatti))}.to output("[\"Saving Private Ryan\", \"Appolo13\"]\n").to_stdout
+      expect{(graph.find_kevin_bacon(tom_hanks))}.to output("[\"Saving Private Ryan\", \"Apollo13\"]\n").to_stdout
     end
   end
 end
