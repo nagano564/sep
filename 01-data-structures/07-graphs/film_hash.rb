@@ -23,6 +23,8 @@ amy_badberg = Node.new("Amy Badberg")
 merv_cross = Node.new("Merv Cross")
 alec_baldwin = Node.new("Alec Baldwin")
 kevin_spacey = Node.new("Kevin Spacey")
+elizabeth_mcgovern = Node.new("Elizabeth Mcgovern")
+
 
 kevin_bacon.film_actor_hash["FootLoose"] = [lori_singer, john_lithgow, chris_penn]
 bill_paxton.film_actor_hash["Apollo 13"] = [kevin_bacon, tom_hanks]
@@ -31,3 +33,4 @@ john_lithgow.film_actor_hash["Interstellar"] = [matthew_mcconaughey, anne_hathaw
 paul_giamatti.film_actor_hash["Donnie Brasco"] = [al_pacino, johnny_depp]
 joe_cross.film_actor_hash["Fat, Sick and nearly dead"] = [amy_badberg, merv_cross]
 al_pacino.film_actor_hash["Glengarry Glen Ross"] = [alec_baldwin, kevin_spacey]
+alec_baldwin.film_actor_hash["She's Having a Baby"] = [kevin_bacon, elizabeth_mcgovern]

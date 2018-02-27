@@ -25,6 +25,7 @@ RSpec.describe FindKevinBacon, type: Class do
   let (:merv_cross) { Node.new("Merv Cross") }
   let (:alec_baldwin) { Node.new("Alec Baldwin") }
   let (:kevin_spacey) { Node.new("Kevin Spacey") }
+  let (:elizabeth_mcgovern) { Node.new("Elizabeth Mcgovern")}
 
   let (:graph) {FindKevinBacon.new(kevin_bacon)}
 
@@ -36,6 +37,7 @@ RSpec.describe FindKevinBacon, type: Class do
     paul_giamatti.film_actor_hash["Donnie Brasco"] = [al_pacino, johnny_depp]
     joe_cross.film_actor_hash["Fat, Sick and nearly dead"] = [amy_badberg, merv_cross]
     al_pacino.film_actor_hash["Glengarry Glen Ross"] = [alec_baldwin, kevin_spacey]
+    alec_baldwin.film_actor_hash["She's Having a Baby"] = [kevin_bacon, elizabeth_mcgovern]
   end
 
   describe "testing the node" do
@@ -47,8 +49,12 @@ RSpec.describe FindKevinBacon, type: Class do
       expect{(graph.find_kevin_bacon(bill_paxton))}.to output("You found Kevin Bacon. Here's the list [\"Apollo 13\"]\n").to_stdout
     end
 
-    it "finds kevin if he is associated with an actor in another film matt_damon => tom_hanks => kevin_bacon" do
-      expect{(graph.find_kevin_bacon(tom_hanks))}.to output("[\"Saving Private Ryan\", \"Apollo13\"]\n").to_stdout
+    it "finds kevin if he is associated with an actor in another film paul_giamatti => al_pacino => alec_baldwin => kevin_bacon" do
+      expect{(graph.find_kevin_bacon(paul_giamatti))}.to output("You found Kevin Bacon. Here's the list [\"Donnie Brasco\", \"Glengarry Glen Ross\", \"She's Having a Baby\"]\n").to_stdout
+    end
+
+    it "has no relation to Kevin Bacon" do
+      expect{(graph.find_kevin_bacon(joe_cross))}.to output("No relation to Kevin Bacon\n").to_stdout
     end
   end
 end
