@@ -15,8 +15,7 @@ end
 def partition(array, low, high)
   pivot = array[high]
   index = low
-
-  # for i in (low...high)
+  byebug
   (low...high).each do |i|
     if array[i] <= pivot
       temp = array[i]
