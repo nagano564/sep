@@ -19,7 +19,6 @@ class LinkedList
        @head = node
        @tail = @head
        @tail.next = nil
-  # did tail change? yes => @tail = node
     else
       @tail.next = node
       @tail = node
@@ -52,12 +51,12 @@ class LinkedList
 
   # This method prints out a representation of the list.
   def print
-      current_node = @head
+    current_node = @head
 
-      while current_node != nil
-          puts "#{current_node.data}"
-          current_node = current_node.next
-      end
+    while current_node != nil
+      puts "#{current_node.data}"
+      current_node = current_node.next
+    end
   end
 
   # This method removes `node` from the list and must keep the rest of the list intact.
@@ -95,8 +94,8 @@ class LinkedList
        @head.next = nil
        @tail = @head
     else
-        node.next = @head
-        @head = node
+      node.next = @head
+      @head = node
     end
   end
 
@@ -122,78 +121,77 @@ class LinkedList
   # @head = 1, 1.next = 2, 2.next = 3, 3.next = 3
   # some_variable = 3
   # some_variable = 4
-  # d_node = d_node.next
+  # node_to_remove = node_to_remove.next
   #how to make sure list links up properly
   def remove_at(index)
-    if @head == nil
-    else
-      d_node = @head
-      (index - 1).times do
-        if d_node.next != nil
-          d_node = d_node.next
-        end
+    return if @head.nil?
+
+    node_to_remove = @head
+    (index - 1).times do
+      if node_to_remove.next != nil
+        node_to_remove = node_to_remove.next
       end
-       d_node.next = d_node.next.next
     end
+     node_to_remove.next = node_to_remove.next.next
   end
 
   def find(index)
-    c_node = @head
-      index.times do
-        if c_node.next != nil
-            c_node = c_node.next
-        end
+    node_to_find = @head
+    index.times do
+      if node_to_find.next != nil
+        node_to_find = node_to_find.next
       end
-      c_node
+    end
+    node_to_find
   end
 end
 
-# Create new Array/LinkedList
-# add the string "item" to the end 10000 times
-#   for an Array: array.push(Node.new("item"))
-#   for a LinkedList: linked_list.add_to_tail(Node.new("item"))
-array = []
-# # puts Benchmark.measure { array.push(Node.new("item")) }
+# # Create new Array/LinkedList
+# # add the string "item" to the end 10000 times
+# #   for an Array: array.push(Node.new("item"))
+# #   for a LinkedList: linked_list.add_to_tail(Node.new("item"))
+# array = []
+# # # puts Benchmark.measure { array.push(Node.new("item")) }
+# # #
+# linked_list = LinkedList.new
+# # # puts Benchmark.measure { linked_list.add_to_tail(Node.new("item")) }
 # #
-linked_list = LinkedList.new
-# # puts Benchmark.measure { linked_list.add_to_tail(Node.new("item")) }
+# n = 10000
+# Benchmark.bm do |x|
+#   x.report do
+#     n.times do
+#       array.push(Node.new("item"))
+#     end
+#   end
 #
-n = 10000
-Benchmark.bm do |x|
-  x.report do
-    n.times do
-      array.push(Node.new("item"))
-    end
-  end
-
-  x.report do
-    # linked list test
-    n.times do
-      linked_list.add_to_tail(Node.new("item"))
-    end
-  end
-end
+#   x.report do
+#     # linked list test
+#     n.times do
+#       linked_list.add_to_tail(Node.new("item"))
+#     end
+#   end
+# end
+# #
+# Benchmark.bm do |x|
+#   x.report ("array find :")do
+#     # array test
+#        array[5000]
+#   end
 #
-Benchmark.bm do |x|
-  x.report ("array find :")do
-    # array test
-       array[5000]
-  end
-
-  x.report ("linked_list find: ") do
-     linked_list.find(5000)
-  end
-end
-
-
-  Benchmark.bm do |x|
-    x.report do
-      # array test
-      array.delete_at(5000)
-    end
-
-    x.report do
-      # linked list test
-      linked_list.remove_at(5000)
-    end
-  end
+#   x.report ("linked_list find: ") do
+#      linked_list.find(5000)
+#   end
+# end
+#
+#
+#   Benchmark.bm do |x|
+#     x.report do
+#       # array test
+#       array.delete_at(5000)
+#     end
+#
+#     x.report do
+#       # linked list test
+#       linked_list.remove_at(5000)
+#     end
+#   end
