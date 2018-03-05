@@ -1,4 +1,6 @@
 require 'benchmark'
+# Worst Case: O(nlgn)
+# Average Case: Θ(nlgn)
 
 def heap_sort(k)
   # heapify and repeat swap
