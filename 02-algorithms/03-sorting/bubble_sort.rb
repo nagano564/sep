@@ -7,17 +7,19 @@
 # Average Case: Θ(n^2)
 
 require 'benchmark'
+require 'byebug'
 
 def bubble_sort(collection)
-  n = collection.length
+  x = collection.length
   # #1
   begin
     swapped = false
     # #2
-    (n - 1).times do |i|
+    (x - 1).times do |k|
       # #3
-      if collection[i] > collection[i + 1]
-        collection[i], collection[i + 1] = collection[i + 1], collection[i]
+
+      if collection[k] > collection[k + 1]
+        collection[k], collection[k + 1] = collection[k + 1], collection[k]
         swapped = true
       end
     end
@@ -27,5 +29,6 @@ def bubble_sort(collection)
 end
 
 
-array = [248, 185, 22, 288, 128, 234, 24, 206, 220]
+# array = [248, 185, 22, 288, 128, 234, 24, 206, 220]
+array = [3,1,2,5,6]
 puts bubble_sort(array).inspect
