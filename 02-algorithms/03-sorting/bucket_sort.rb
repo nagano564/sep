@@ -1,7 +1,11 @@
-require_relative './quick_sort'
-require 'benchmark'
+# Bucket Sort works by distributing the elements of an array into a number of
+# buckets. Each bucket is then sorted individually, either using a different
+# sorting algorithm, or by recursively applying the bucket sorting algorithm.
 # Worst Case: O(n^2)
 # Average Case: Θ(n+k)
+
+require_relative './quick_sort'
+require 'benchmark'
 
 def bucket_sort(array)
   bucket_size = 5
@@ -24,5 +28,5 @@ def bucket_sort(array)
   return array
  end
 
-array = [248, 185, 22, 288, 128, 234, 24, 206, 220] 
+array = [248, 185, 22, 288, 128, 234, 24, 206, 220]
 puts bucket_sort(array).inspect

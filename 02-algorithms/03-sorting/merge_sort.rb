@@ -1,3 +1,13 @@
+
+# Merge Sort breaks the collection into sub-collections and sorts each
+# sub-collection. Sorted sub-collections are merged together (using recursion) 
+# to form larger sorted collections until the entire collection is sorted. Merge
+# sort has good performance compared to other sorting algorithms.
+
+# Best Case: Ω(nlgn)
+# Worst Case: O(nlgn)
+# Average Case: Θ(nlgn
+
 require 'benchmark'
 require 'byebug'
 

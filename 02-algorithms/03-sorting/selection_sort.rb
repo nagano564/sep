@@ -1,3 +1,12 @@
+
+# Selection Sort selects the item which should be sorted "next" and moves it to
+# the front (or back) of the collection. Selection sort has poor performance
+# compared to other sorting algorithms.
+
+# Best Case: Ω(n^2)
+# Worst Case: O(n^2)
+# Average Case: Θ(n^2)
+
 require 'benchmark'
 
 def selection_sort(collection)

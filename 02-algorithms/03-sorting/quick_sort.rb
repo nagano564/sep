@@ -1,3 +1,13 @@
+# Quick Sort picks a pivot point and compares each item to the pivot point.
+# It moves each item according to the pivot point. When there are no more items
+# to move in the first iteration, these steps are repeated for the "left" and
+# "right" sides of the collection. Quick sort has good performance compared to
+# other sorting algorithms.
+
+# Best Case: Ω(nlgn)
+# Worst Case: O(n^2)
+# Average Case: Θ(nlgn)
+
 require 'byebug'
 require 'benchmark'
 
