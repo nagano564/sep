@@ -32,15 +32,13 @@ class BinarySearchTree
   def find(root, data)
 	  if data.nil?
 		  return nil
-	  end
-
-	  if root.title == data
+	  elsif root.title == data
 		  return root
 	  end
 
 	  unless root.left.nil?
-        answer = find(root.left, data)
-        return answer unless answer == nil
+      answer = find(root.left, data)
+      return answer unless answer == nil
 	  end
 
 	  unless root.right.nil?
@@ -84,13 +82,12 @@ class BinarySearchTree
     return nil if node.nil?
     queue = Queue.new
     queue.enq(node)
-    result = nil
     until queue.empty?
       value = queue.deq
-      puts "#{value.title}: #{value.rating}" if !value.title.nil?
+      puts "#{value.title}: #{value.rating}" unless value.title.nil?
       # keep moving the levels in tree by pushing left and right nodes of tree in queue
-      queue.enq(value.left) if value.left
-      queue.enq(value.right) if value.right
+      queue.enq(value.left) unless value.left.nil?
+      queue.enq(value.right) unless value.right.nil?
     end
   end
 end
