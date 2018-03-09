@@ -29,21 +29,12 @@ class BinarySearchTree
   end
 
   # Recursive Depth First Search
-  def find(root, data)
-	  if data.nil?
-		  return nil
-	  elsif root.title == data
-		  return root
-	  end
+  def find(root, search)
+    return if root.nil? || search.nil?
 
-	  unless root.left.nil?
-      answer = find(root.left, data)
-      return answer unless answer == nil
-	  end
+    return root if root.title == search
 
-	  unless root.right.nil?
-		  return find(root.right, data)
-	  end
+    find(root.left, search) || find(root.right, search)
   end
 
   def delete(root, data)
