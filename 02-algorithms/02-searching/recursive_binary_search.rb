@@ -10,3 +10,6 @@ def recursive_binary_search (collection, value)
     recursive_binary_search(collection[min..middle-1],value)
   end
 end
+
+
+collection = [4,2,5,7,1]
