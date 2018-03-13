@@ -12,7 +12,7 @@ require 'benchmark'
 def selection_sort(collection)
   length = collection.length
 
-   (0..length - 2).each do |i|
+   (0..length - 1).each do |i|
     min_index = i
 
     ((i + 1)...length).each do |j|
