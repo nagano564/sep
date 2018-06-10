@@ -89,7 +89,7 @@ class LinkedList
   # if list is empty head = node
   # if list has one item head = node and head.next = old head
   def add_to_front(node)
-    if @head == nil
+    if @head.nil?
        @head = node
        @head.next = nil
        @tail = @head
