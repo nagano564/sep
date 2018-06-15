@@ -62,7 +62,7 @@ RSpec.describe LinkedList, type: Class do
     end
 
     it "removes the middle element but it's not there" do
-          expect { llist.delete(n4) }.to raise_error
+      expect(llist.delete(n4)).to eq nil
     end
 
     it "removes the last element of a list properly" do

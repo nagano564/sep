@@ -1,5 +1,5 @@
 require_relative 'node'
-require 'pry'
+require 'byebug'
 require 'benchmark'
 
 class LinkedList
@@ -15,14 +15,14 @@ class LinkedList
   # once my_node.next = nil add node
   # once my_node.next = nil => my_node.next = node
   def add_to_tail(node)
-    if @head == nil
-       @head = node
-       @tail = @head
-       @tail.next = nil
+    if @head.nil?
+      @head = node
+      @tail = node
+      @tail.next = nil
     else
       @tail.next = node
       @tail = node
-      @tail.next = nil
+      @tail.next =nil
     end
   end
 
@@ -64,25 +64,26 @@ class LinkedList
   #  node.delete
 
   def delete(node)
-    return if @head.nil?
-
-    if @head == @tail
-       @head = nil
-       @tail = nil
-    elsif @head == node
-      self.remove_front
-    elsif @tail == node
-      self.remove_tail
+    if node == @head
+      remove_front
+    elsif node == @tail
+      remove_tail
     else
-      pointer_node = @head
-      until pointer_node.next == node
-        pointer_node = pointer_node.next
-          if (pointer_node == nil)
-           raise ArgumentError
-          end
-      end
-      pointer_node.next = node.next
+      delete_node(node)
     end
+  end
+
+  def delete_node(node)
+    pointer_node = @head
+    until pointer_node.next == node
+      if pointer_node.next == @tail
+        puts "#{node.data} not in this linked list"
+        break
+      else
+        pointer_node = pointer_node.next
+      end
+    end
+    pointer_node.next = pointer_node.next.next
   end
 
   # This method adds `node` to the front of the list and must set the list's head to `node`.
@@ -90,9 +91,9 @@ class LinkedList
   # if list has one item head = node and head.next = old head
   def add_to_front(node)
     if @head.nil?
-       @head = node
-       @head.next = nil
-       @tail = @head
+      @head = node
+      @tail = node
+      @tail.next = nil
     else
       node.next = @head
       @head = node
@@ -108,11 +109,11 @@ class LinkedList
   def remove_front
     return if @head.nil?
 
-  	if @head == @tail
-  		 @head = nil
-  		 @tail = nil
-  	else
-  		@head = @head.next
+    if @head == @tail
+      @head = nil
+      @tail = nil
+    else
+      @head = @head.next
     end
   end
 
