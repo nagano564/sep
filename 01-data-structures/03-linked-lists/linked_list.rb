@@ -122,18 +122,18 @@ class LinkedList
   # @head = 1, 1.next = 2, 2.next = 3, 3.next = 3
   # some_variable = 3
   # some_variable = 4
-  # node_to_remove = node_to_remove.next
+  # pointer = pointer.next
   #how to make sure list links up properly
   def remove_at(index)
     return if @head.nil?
 
-    node_to_remove = @head
+    pointer = @head
     (index - 1).times do
-      if node_to_remove.next != nil
-        node_to_remove = node_to_remove.next
+      if pointer.next != nil
+        pointer = pointer.next
       end
     end
-     node_to_remove.next = node_to_remove.next.next
+     pointer.next = pointer.next.next
   end
 
   def find(index)
